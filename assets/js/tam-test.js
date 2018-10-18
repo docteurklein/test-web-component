@@ -6,7 +6,7 @@ export class TamTest extends HTMLElement {
         this.shadow = this.attachShadow({mode: 'open'});
         this.render();
 
-        this.shadow.addEventListener('submit', (event) => {
+        this.shadow.addEventListener('input', (event) => {
             if (event.target.matches('#name')) {
                 event.preventDefault();
                 this.attributes.name.value = event.target.value;
@@ -18,8 +18,8 @@ export class TamTest extends HTMLElement {
         render(html`
             <link rel="stylesheet" href="/assets/css/tam-test.css"/>
             <p>${this.attributes.name.value}</p>
-            <form id="name">
-                <input value="${this.attributes.name.value}"/>
+            <form>
+                <input id="name" value="${this.attributes.name.value}"/>
             </form>
         `, this.shadow);
     }
