@@ -1,0 +1,11 @@
+:root {
+    --flo-color: blue;
+}
+
+* {
+    color: green;
+}
+
+
+tam-test::shadow * { border: 1px solid black; }
+
