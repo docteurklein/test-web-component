@@ -1,28 +1,34 @@
-import {html} from "/node_modules/html-template-literal/HTMLTemplateLiteral.js";
+import {html, render} from '/node_modules/lit-html/lit-html.js';
 
 export class TamTest extends HTMLElement {
     constructor() {
         super();
-        this.name = 'default';
         this.shadow = this.attachShadow({mode: 'open'});
-        html `<link rel="stylesheet" href="/assets/css/tam-test.css"/>`.appendTo(this.shadow);
-        this.content = document.createElement('div');
-        this.subContent = document.createElement('div');
-        this.content.appendChild(this.subContent);
-        this.shadow.appendChild(this.content);
         this.render();
+
+        this.shadow.addEventListener('submit', (event) => {
+            if (event.target.matches('#name')) {
+                event.preventDefault();
+                this.attributes.name.value = event.target.value;
+            }
+        });
     }
 
     render() {
-        html `<p>${this.name}</p>`.replace(this.subContent);
-    }
-
-    attributeChangedCallback(name, old, val) {
-        this.name = val;
-        this.render();
+        render(html`
+            <link rel="stylesheet" href="/assets/css/tam-test.css"/>
+            <p>${this.attributes.name.value}</p>
+            <form id="name">
+                <input value="${this.attributes.name.value}"/>
+            </form>
+        `, this.shadow);
     }
 
     static get observedAttributes() { return ['name']; }
+
+    attributeChangedCallback() {
+        this.render();
+    }
 }
 
 customElements.define('tam-test', TamTest);
