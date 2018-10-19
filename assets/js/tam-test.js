@@ -1,6 +1,4 @@
-import {html, render} from '/node_modules/lit-html/lit-html.js';
-import {listen_on} from './index.js';
-import { repeat } from '/node_modules/lit-html/directives/repeat.js';
+import {listen_on, html, render, repeat} from './index.js';
 
 export class TamTest extends HTMLElement {
     constructor() {

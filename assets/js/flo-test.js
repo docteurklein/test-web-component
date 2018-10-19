@@ -1,7 +1,5 @@
 import {TamTest} from "./tam-test.js";
-import {html, render} from '/node_modules/lit-html/lit-html.js';
-import { repeat } from '/node_modules/lit-html/directives/repeat.js';
-import {listen_on} from './index.js';
+import {listen_on, html, render, repeat} from './index.js';
 
 export class FloTest extends HTMLElement {
     constructor() {
