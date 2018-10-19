@@ -18,6 +18,12 @@ export class FloTest extends HTMLElement {
             this.render();
         }, 1000);
 
+        setInterval(() => {
+            this.count = 1;
+            this.tams = [];
+            this.render();
+        }, 10000);
+
         let on = listen_on(this.shadow);
         on('tam-changed', '*', (event) => {
             this.last = event.detail.title;
@@ -39,7 +45,7 @@ export class FloTest extends HTMLElement {
             ${repeat(
                 this.tams,
                 item => item.title,
-                item => html`<tam-test tam=${JSON.stringify(item)} />`
+                item => html`<tam-test tam-title="test" tam=${JSON.stringify(item)} />`
             )}
         `, this.shadow);
     }
