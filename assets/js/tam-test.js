@@ -43,11 +43,10 @@ export class TamTest extends HTMLElement {
         `, this.shadow);
     }
 
-    static get observedAttributes() { return ['tam', 'tam-title']; }
+    static get observedAttributes() { return ['tam-title']; }
 
     attributeChangedCallback(name, old, val) {
         this[name] = val;
-        if (name == 'tam') this[name] = JSON.parse(val);
         this.render();
     }
 }

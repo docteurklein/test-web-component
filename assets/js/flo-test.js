@@ -42,8 +42,8 @@ export class FloTest extends HTMLElement {
             </p>
             ${repeat(
                 this.tams,
-                item => item.title,
-                item => html`<tam-test tam-title="test" tam=${JSON.stringify(item)} />`
+                tam => tam.title,
+                tam => html`<tam-test tam-title="test" .tam=${tam} />`
             )}
         `, this.shadow);
     }
