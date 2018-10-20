@@ -1,1 +1,10 @@
-* { color: red; }
+* { color: green; }
+
+h3 {
+    border: 1px solid black;
+    color: purple;
+}
+
+input:focus {
+    border: 5px solid blue;
+}
